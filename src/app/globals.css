@@ -1,0 +1,231 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap');
+@import "tailwindcss";
+
+@theme inline {
+  --font-sans: system-ui, -apple-system, BlinkMacSystemFont, 'Inter', sans-serif;
+  
+  /* Apple Color Palette Mapping overrides */
+  --color-slate-50: #fafafc; /* surface-pearl */
+  --color-slate-100: #f5f5f7; /* canvas-parchment */
+  --color-slate-200: #e0e0e0; /* hairline */
+  --color-slate-300: #cccccc; /* body-muted */
+  --color-slate-400: #7a7a7a; /* ink-muted-48 */
+  --color-slate-500: #7a7a7a;
+  --color-slate-600: #333333; /* ink-muted-80 */
+  --color-slate-700: #1d1d1f;
+  --color-slate-800: #272729; /* surface-tile-1 */
+  --color-slate-900: #1d1d1f; /* ink */
+  
+  --color-blue-50: #fafafc;
+  --color-blue-100: #f0f0f0;
+  --color-blue-500: #0071e3; /* primary-focus */
+  --color-blue-600: #0066cc; /* primary */
+  --color-blue-700: #0066cc; 
+  --color-blue-800: #0066cc;
+  --color-blue-900: #0066cc;
+  
+  --color-emerald-700: #1d1d1f; /* Mapping employee mode to ink for minimal color palette */
+  --color-emerald-800: #1d1d1f;
+
+  --color-white: #ffffff; /* canvas */
+  --color-black: #000000; /* surface-black */
+
+  /* Override specific utility classes properties */
+  --radius-sm: 8px;
+  --radius-md: 11px;
+  --radius-lg: 18px;
+  --radius-xl: 18px;
+}
+
+:root {
+  --background: #ffffff;
+  --foreground: #1d1d1f;
+  --surface: #ffffff;
+  --border: #e0e0e0;
+  --accent: #0066cc;
+  --accent-strong: #0071e3;
+  --ink: #1d1d1f;
+  --ink-soft: #333333;
+  --muted: #7a7a7a;
+}
+
+html,
+body {
+  background: var(--background);
+  color: var(--foreground);
+  min-height: 100%;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Inter', sans-serif;
+  font-size: 17px;
+  line-height: 1.47;
+  letter-spacing: -0.374px; /* Apple tight tracking for body */
+  background-image: none; /* No decorative gradients */
+}
+
+/* 
+ * Typography Overrides
+ * Display size negative letter spacing ("Apple tight")
+ * Headlines sit at weight 600, never 700/800
+ */
+h1, h2, h3 {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Inter', sans-serif !important;
+  font-weight: 600 !important;
+}
+
+h1 {
+  font-size: 40px !important; /* display-lg */
+  line-height: 1.1 !important;
+  letter-spacing: -0.374px !important;
+}
+
+h2 {
+  font-size: 34px !important; /* display-md */
+  line-height: 1.47 !important;
+  letter-spacing: -0.374px !important;
+}
+
+/* Modest weights for non-heading elements that had bold */
+span.font-bold, p.font-bold, div.font-bold, button.font-bold {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Inter', sans-serif !important;
+  font-weight: 600 !important;
+  letter-spacing: -0.374px !important;
+}
+.font-extrabold {
+  font-weight: 600 !important;
+}
+.font-bold {
+  font-weight: 600 !important;
+}
+
+/* Button overrides - force pill shape for primary CTA */
+button {
+  border-radius: 9999px !important;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Inter', sans-serif !important;
+  font-weight: 400 !important;
+}
+button:active {
+  transform: scale(0.95); /* system-wide micro-interaction */
+  transition: transform 0.1s ease-in-out;
+}
+
+/* Input overrides - search is pill-shaped */
+input, select, textarea {
+  border-radius: 9999px !important;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Inter', sans-serif !important;
+  font-weight: 400 !important;
+  border-color: var(--border) !important;
+  padding-left: 20px !important;
+  padding-right: 20px !important;
+}
+input:focus, select:focus, textarea:focus {
+  border-color: var(--accent) !important;
+  outline: 2px solid var(--accent-strong) !important;
+  box-shadow: none !important;
+}
+
+/* Card overrides - store utility cards */
+.rounded-lg, .wf-card {
+  border-radius: 18px !important; /* {rounded.lg} */
+  box-shadow: none !important; /* No shadows on chrome */
+  border: 1px solid var(--border) !important;
+}
+
+/* Small badges / pills */
+.rounded, .rounded-full {
+  border-radius: 9999px !important; /* {rounded.pill} */
+}
+
+/* Header & Tiles alignment */
+header {
+  border-radius: 0 !important; /* edge-to-edge full bleed */
+  border-left: none !important;
+  border-right: none !important;
+  border-top: none !important;
+  padding-top: 40px !important;
+  padding-bottom: 40px !important;
+}
+
+/* Logo icon styling for WorkFlow 'W' */
+.bg-slate-900.w-9 {
+  background-color: var(--ink) !important;
+  color: #ffffff !important;
+  border: none !important;
+  border-radius: 8px !important; /* rounded.sm for dark utility */
+}
+.bg-slate-900.w-9 span {
+  font-weight: 600 !important;
+  font-size: 20px !important;
+  letter-spacing: -0.374px !important;
+}
+
+/* Legacy .wf-* classes from previous styling */
+@keyframes wf-fade-in {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes wf-shimmer {
+  0% { background-position: -400px 0; }
+  100% { background-position: 400px 0; }
+}
+
+.wf-fade-in { animation: wf-fade-in 0.4s ease-out both; }
+
+.wf-shimmer {
+  background: linear-gradient(
+    90deg,
+    rgba(224, 224, 224, 0) 0%,
+    rgba(224, 224, 224, 0.6) 50%,
+    rgba(224, 224, 224, 0) 100%
+  );
+  background-size: 800px 100%;
+  animation: wf-shimmer 2s linear infinite;
+}
+
+.wf-card {
+  background: var(--surface);
+  box-shadow: none !important; /* Explicitly removing shadow */
+  border: 1px solid var(--border) !important;
+}
+
+.wf-card-hover {
+  transition: transform 160ms ease, border-color 160ms ease;
+}
+.wf-card-hover:hover {
+  box-shadow: none !important;
+  border-color: var(--color-slate-400) !important;
+}
+
+.wf-surface-primary {
+  background: var(--accent); /* Action Blue for primary surface */
+  color: #ffffff;
+  border-radius: 9999px !important;
+}
+
+.wf-surface-secondary {
+  background: var(--color-slate-100); /* canvas-parchment */
+  color: var(--ink);
+  border-radius: 18px !important; /* store utility card */
+}
+
+.wf-accent-bg {
+  background-color: var(--accent);
+  color: #ffffff;
+}
+.wf-accent-text { color: var(--accent); }
+
+.wf-gradient-bg {
+  background: var(--ink);
+  color: #ffffff;
+}
+.wf-gradient-text {
+  color: var(--ink);
+}
+
+.wf-thin-scroll::-webkit-scrollbar { width: 6px; }
+.wf-thin-scroll::-webkit-scrollbar-thumb {
+  background: rgba(29, 29, 31, 0.1);
+  border-radius: 9999px;
+}
+.wf-thin-scroll::-webkit-scrollbar-thumb:hover {
+  background: rgba(29, 29, 31, 0.2);
+}
